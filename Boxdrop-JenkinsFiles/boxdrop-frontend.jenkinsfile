@@ -1,0 +1,26 @@
+pipeline {
+    agent {label 'Shahin-Test'}
+
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'sudo yarn install'
+                            }
+            }
+
+        stage('Test') {
+            steps {
+                sh "sudo chmod +x -R ${env.WORKSPACE}"
+                sh 'sudo yarn build'
+                sh "sudo scp -r /home/shahin/jenkins/workspace/frontend-test-purpose/* /var/www/html/ "
+                sh "sudo npm install -g pm2"
+                sh 'sudo yarn global add pm2'
+                sh 'sudo pm2 start yarn --name "dcc-webapp" -- start'
+                sh 'sudo pm2 boxdrop-webapp'
+                
+            }
+        }
+    
+    }
+}

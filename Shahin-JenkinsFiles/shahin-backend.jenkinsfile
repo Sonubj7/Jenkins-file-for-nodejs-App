@@ -1,0 +1,12 @@
+pipeline {
+    agent {label 'Shahin-Node'}
+
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'sudo yarn install'
+                            }
+            }
+    }
+}

@@ -1,0 +1,13 @@
+pipeline {
+    agent {label 'Shahin-Node'}
+
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'sudo sed -i "s,config.db.url,'mongodb://localhost:27017'," src/helpers/database.js'
+                sh 'sudo yarn install'
+                            }
+            }
+    }
+}
