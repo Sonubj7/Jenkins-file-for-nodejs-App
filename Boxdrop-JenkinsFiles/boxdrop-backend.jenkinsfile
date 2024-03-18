@@ -1,11 +1,15 @@
 pipeline {
     agent {label 'Shahin-Node'}
+    environment {
+        NODE_ENV="development"
+    }
 
 
     stages {
         stage('Build') {
             steps {
-                sh 'sudo sed -i "s,config.db.url,'mongodb://localhost:27017'," src/helpers/database.js'
+                sh 'sudo touch .env'
+                sh 'sudo cp -r .env.${NODE_ENV} .env'
                 sh 'sudo yarn install'
                             }
             }
