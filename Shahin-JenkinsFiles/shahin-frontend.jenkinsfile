@@ -5,7 +5,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo rm -rf /home/shahin/jenkins/workspace/Shahin-frontend-webapp/node_modules/ /home/shahin/jenkins/workspace/Shahin-frontend-webapp/package-lock.json'
                 sh 'sudo yarn install'
                             }
             }
