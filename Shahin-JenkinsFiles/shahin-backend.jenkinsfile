@@ -1,11 +1,17 @@
 pipeline {
-    agent {label 'Shahin-Node'}
+    agent {label 'Shahin-Test'}
+    environment {
+        NODE_ENV="production"
+    }
 
-
-    stages {
-        stage('Build') {
+    stages {    
+        stage('Install') {
             steps {
+
+                sh 'sudo touch .env'
+                sh 'sudo cp -r .env.${NODE_ENV} .env'
                 sh 'sudo yarn install'
+
                             }
             }
     }
