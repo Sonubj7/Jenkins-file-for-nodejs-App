@@ -25,7 +25,6 @@ Create a jenkins file script for a nodejs application
 `sudo systemctl enable jenkins`
 
 - LOGIN VIA BROWSER
- `http://your_server_ip:8080`
 
 - INITIAL PASSWORD
  `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
