@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo rm -rf /home/shahin/jenkins/workspace/Shahin-frontend-webapp/node_modules/ /home/shahin/jenkins/workspace/Shahin-frontend-webapp/package-lock.json'
+    
                 sh 'sudo yarn install'
                             }
             }
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh "sudo chmod +x -R ${env.WORKSPACE}"
                 sh 'sudo yarn build'
-                sh "sudo scp -r /home/shahin/jenkins/workspace/Shahin-frontend-webapp/* /var/www/html/ "
+                sh "sudo scp -r * /var/www/html/ "
                 sh 'sudo yarn global add pm2'
                 sh 'sudo pm2 start yarn --name "dcc-webapp" -- start'
                 sh 'sudo pm2 startup'
